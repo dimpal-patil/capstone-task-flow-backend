@@ -14,11 +14,17 @@ const projectSchema = new mongoose.Schema(
         trim: true
     },
 
+    status: {
+        type: String,
+        enum: ["Active", "Archived"],
+        default: "Active"
+    },
+
     owner: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
         required: true
-    }
+    },
 },
 {
     timestamps: true

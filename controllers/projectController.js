@@ -114,10 +114,14 @@ const updateProject = async (req, res) => {
             });
         }
 
-        const { name, description } = req.body;
+        const { name, description, status } = req.body;
 
         project.name = name;
         project.description = description;
+
+        if (status) {
+            project.status = status;
+        }
 
         await project.save();
 

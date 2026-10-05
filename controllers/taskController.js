@@ -3,7 +3,7 @@ const Project = require("../models/project-model");
 
 const createTask = async (req, res) => {
     try {
-        const { title, description, status } = req.body;
+        const { title, description, status, priority} = req.body;
         const { projectId } = req.params;
 
         const project = await Project.findById(projectId);
@@ -24,6 +24,7 @@ const createTask = async (req, res) => {
             title,
             description,
             status,
+            priority,
             project: project._id
         });
 
