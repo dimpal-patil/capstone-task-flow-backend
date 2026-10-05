@@ -3,9 +3,30 @@ const Project = require("../models/project-model");
 
 const getProjects = async (req, res) => {
     try {
-        const projects = await Project.find({
+        const { search } = req.query;
+
+        const query = {
             owner: req.user._id
-        });
+        };
+
+        if (search) {
+            query.$or = [
+                {
+                    name: {
+                        $regex: search,
+                        $options: "i"
+                    }
+                },
+                {
+                    description: {
+                        $regex: search,
+                        $options: "i"
+                    }
+                }
+            ];
+        }
+
+        const projects = await Project.find(query);
 
         res.status(200).json({
             projects
