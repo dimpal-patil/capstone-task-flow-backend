@@ -9,7 +9,6 @@ const cors = require("cors");
 const PORT = process.env.PORT || 3000;
 const app = express();
 
-
 app.use(express.static(path.join(__dirname,"public")));
 app.use(express.urlencoded());
 app.use(cors());

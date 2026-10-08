@@ -1,4 +1,5 @@
 const Project = require("../models/project-model");
+const Task = require("../models/task-model");
 
 
 const getProjects = async (req, res) => {
@@ -158,10 +159,16 @@ const deleteProject = async (req, res) => {
             });
         }
 
+        // Delete all tasks belonging to this project
+        await Task.deleteMany({
+            project: req.params.id
+        });
+
+        // Delete the project
         await Project.findByIdAndDelete(req.params.id);
 
         res.status(200).json({
-            message: "Project deleted successfully"
+            message: "Project and related tasks deleted successfully"
         });
 
     } catch (error) {
