@@ -2,6 +2,21 @@
 
 A RESTful API built with **Node.js, Express, MongoDB, Mongoose, and JWT** for managing projects and tasks securely.
 
+## Deployment
+
+**Live Application:**
+https://capstone-task-flow-frontend-e92hw5rkd-dimpal-patils-projects.vercel.app/login
+
+**Frontend Repository:**
+https://github.com/dimpal-patil/capstone-task-flow-frontend
+
+**Backend Repository:**
+https://github.com/dimpal-patil/capstone-task-flow-backend
+
+> **Note:** TaskFlow uses separate frontend and backend repositories.
+> The frontend communicates with the deployed backend API, so both services work together to provide the complete application.
+
+
 ## Features
 
 - User registration and login
@@ -109,12 +124,6 @@ npm run dev
 ```
 
 This uses **nodemon**, which restarts the server automatically when you edit files.
-
-### Production
-
-```bash
-node server.js
-```
 
 Once running, you should see:
 
@@ -259,13 +268,4 @@ Use **Postman** (or Thunder Client / curl) to:
 > project/task IDs, even if those IDs are valid. Use a tool like Postman to
 > verify this, since the frontend normally never sends such requests.
 
-## Common Issues
 
-- **`MongoServerError: bad auth`** — check your Atlas username/password in `MONGO_URI`.
-- **`MongooseServerSelectionError`** — your IP may not be whitelisted in Atlas, or MongoDB isn't running locally.
-- **`EADDRINUSE`** — the port is already in use. Change `PORT` in `.env` or stop the other process.
-- **`jwt malformed`** — make sure you send `Authorization: Bearer <token>` (with the `Bearer` prefix and a space).
-
-## License
-
-ISC
